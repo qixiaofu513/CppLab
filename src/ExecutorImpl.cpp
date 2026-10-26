@@ -41,7 +41,23 @@ namespace adas
                             break;
                     }
                     break;
-                
+                case 'L':
+                    switch (pose.heading)
+                    {
+                        case 'N':
+                            pose.heading = 'W';
+                            break;
+                        case 'E':
+                            pose.heading = 'N';
+                            break;
+                        case 'S':
+                            pose.heading = 'E';
+                            break;
+                        case 'W':
+                            pose.heading = 'S';
+                            break;
+                    }
+                    break;
             }
         }
     }
