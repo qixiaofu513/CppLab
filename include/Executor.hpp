@@ -24,5 +24,7 @@ namespace adas
         public:
             //执行器的接口函数
             virtual Pose Query(void) const noexcept = 0;
+            //执行器的接口函数，执行给定的命令
+            virtual void Execute(const std::string &commands) noexcept = 0;
     };
 }

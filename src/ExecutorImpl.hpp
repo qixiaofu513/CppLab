@@ -18,6 +18,8 @@ namespace adas
         public:
             //重写Query函数，返回当前汽车姿态
             Pose Query(void) const noexcept override;
+            //重写Execute函数，执行给定的命令
+            void Execute(const std::string &commands) noexcept override;
         private:
             Pose pose;//当前汽车姿态
     };
