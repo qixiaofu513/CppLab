@@ -1,6 +1,7 @@
 #include "ExecutorImpl.hpp"
 
 #include <new>
+#include <memory>
 
 namespace adas
 {
@@ -22,17 +23,18 @@ namespace adas
     {
         for (const auto cmd : commands)
         {
-            switch (cmd)
+            if (cmd == 'M')
             {
-                case 'M':
-                    Move();
-                    break;
-                case 'L':
-                    TurnLeft();
-                    break;
-                case 'R':
-                    TurnRight();
-                    break;
+                std::unique_ptr<MoveCommand> cmder = std::make_unique<MoveCommand>();
+                cmder->DoOperate(*this);
+            }
+            else if (cmd == 'L')
+            {
+                TurnLeft();
+            }
+            else if (cmd == 'R')
+            {
+                TurnRight();
             }
         }
     }
