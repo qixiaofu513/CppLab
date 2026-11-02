@@ -22,11 +22,14 @@ namespace adas
             void Execute(const std::string &commands) noexcept override;
         private:
             Pose pose;//当前汽车姿态
-            bool isFast;//是否位于加速状态
+            bool isFast{false};//是否位于加速状态
 
             void Move(void) noexcept;//移动汽车
             void TurnLeft(void) noexcept;//左转汽车
             void TurnRight(void) noexcept;//右转汽车
+            void Fast(void) noexcept;//加速汽车
+
+            bool IsFast(void) const noexcept;//判断是否位于加速状态
 
             class ICommand
             {
@@ -39,6 +42,10 @@ namespace adas
                 public:
                 void DoOperate(ExecutorImpl& executor)const noexcept override
                 {
+                    if (executor.IsFast())
+                    {
+                        executor.Move();
+                    }
                     executor.Move();
                 }
             };
@@ -47,6 +54,10 @@ namespace adas
                 public:
                 void DoOperate(ExecutorImpl& executor)const noexcept override
                 {
+                    if (executor.IsFast())
+                    {
+                        executor.Move();
+                    }
                     executor.TurnLeft();
                 }
             };
@@ -55,7 +66,19 @@ namespace adas
                 public:
                 void DoOperate(ExecutorImpl& executor)const noexcept override
                 {
+                    if (executor.IsFast())
+                    {
+                        executor.Move();
+                    }
                     executor.TurnRight();
+                }
+            };
+            class FastCommand final : public ICommand
+            {
+                public:
+                void DoOperate(ExecutorImpl& executor)const noexcept override
+                {
+                    executor.Fast();
                 }
             };
             

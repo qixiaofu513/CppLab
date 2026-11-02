@@ -36,6 +36,10 @@ namespace adas
             {
                 cmder = std::make_unique<TurnRightCommand>();
             }
+            else if (cmd == 'F')
+            {
+                cmder = std::make_unique<FastCommand>();
+            }
 
             if (cmder)
             {
@@ -99,5 +103,15 @@ namespace adas
                 pose.heading = 'N';
                 break;
         }
+    }
+
+    void ExecutorImpl::Fast(void) noexcept
+    {
+        isFast = !isFast;
+    }
+
+    bool ExecutorImpl::IsFast(void) const noexcept
+    {
+        return isFast;
     }
 }
