@@ -25,5 +25,6 @@ namespace adas
             bool isFast;//是否位于加速状态
         private:
             void Move(void) noexcept;//移动汽车
+            void TurnLeft(void) noexcept;//左转汽车
     };
 }
