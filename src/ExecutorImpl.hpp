@@ -28,26 +28,32 @@ namespace adas
             void TurnLeft(void) noexcept;//左转汽车
             void TurnRight(void) noexcept;//右转汽车
 
-            class MoveCommand final
+            class ICommand
             {
                 public:
-                void DoOperate(ExecutorImpl& executor)const noexcept
+                virtual void DoOperate(ExecutorImpl& executor)const noexcept = 0;
+                virtual ~ICommand(void) noexcept = default;
+            };
+            class MoveCommand final : public ICommand
+            {
+                public:
+                void DoOperate(ExecutorImpl& executor)const noexcept override
                 {
                     executor.Move();
                 }
             };
-            class TurnLeftCommand final
+            class TurnLeftCommand final : public ICommand
             {
                 public:
-                void DoOperate(ExecutorImpl& executor)const noexcept
+                void DoOperate(ExecutorImpl& executor)const noexcept override
                 {
                     executor.TurnLeft();
                 }
             };
-            class TurnRightCommand final
+            class TurnRightCommand final : public ICommand
             {
                 public:
-                void DoOperate(ExecutorImpl& executor)const noexcept
+                void DoOperate(ExecutorImpl& executor)const noexcept override
                 {
                     executor.TurnRight();
                 }

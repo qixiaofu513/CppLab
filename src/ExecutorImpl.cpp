@@ -23,19 +23,22 @@ namespace adas
     {
         for (const auto cmd : commands)
         {
+            std::unique_ptr<ICommand> cmder;
             if (cmd == 'M')
             {
-                std::unique_ptr<MoveCommand> cmder = std::make_unique<MoveCommand>();
-                cmder->DoOperate(*this);
+                cmder = std::make_unique<MoveCommand>();
             }
             else if (cmd == 'L')
             {
-                std::unique_ptr<TurnLeftCommand> cmder = std::make_unique<TurnLeftCommand>();
-                cmder->DoOperate(*this);
+                cmder = std::make_unique<TurnLeftCommand>();
             }
             else if (cmd == 'R')
             {
-                std::unique_ptr<TurnRightCommand> cmder = std::make_unique<TurnRightCommand>();
+                cmder = std::make_unique<TurnRightCommand>();
+            }
+
+            if (cmder)
+            {
                 cmder->DoOperate(*this);
             }
         }
