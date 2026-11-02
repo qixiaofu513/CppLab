@@ -4,7 +4,7 @@
 
 namespace adas
 {
-    ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : pose(pose)
+    ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : pose(pose) , isFast(false)
     {
     }
 
@@ -25,21 +25,7 @@ namespace adas
             switch (cmd)
             {
                 case 'M':
-                    switch (pose.heading)
-                    {
-                        case 'N':
-                            pose.y++;
-                            break;
-                        case 'E':
-                            pose.x++;
-                            break;
-                        case 'S':
-                            pose.y--;
-                            break;
-                        case 'W':
-                            pose.x--;
-                            break;
-                    }
+                    Move();
                     break;
                 case 'L':
                     switch (pose.heading)
@@ -76,6 +62,25 @@ namespace adas
                     }
                     break;
             }
+        }
+    }
+
+    void ExecutorImpl::Move(void) noexcept
+    {
+        switch (pose.heading)
+        {
+            case 'N':
+                pose.y++;
+                break;
+            case 'E':
+                pose.x++;
+                break;
+            case 'S':
+                pose.y--;
+                break;
+            case 'W':
+                pose.x--;
+                break;
         }
     }
 }
