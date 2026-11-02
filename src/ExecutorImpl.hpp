@@ -26,5 +26,6 @@ namespace adas
         private:
             void Move(void) noexcept;//移动汽车
             void TurnLeft(void) noexcept;//左转汽车
+            void TurnRight(void) noexcept;//右转汽车
     };
 }
