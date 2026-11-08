@@ -23,64 +23,12 @@ namespace adas
         private:
             Pose pose;//当前汽车姿态
             bool isFast{false};//是否位于加速状态
-
+        public:
             void Move(void) noexcept;//移动汽车
             void TurnLeft(void) noexcept;//左转汽车
             void TurnRight(void) noexcept;//右转汽车
             void Fast(void) noexcept;//加速汽车
-
             bool IsFast(void) const noexcept;//判断是否位于加速状态
-
-            class ICommand
-            {
-                public:
-                virtual void DoOperate(ExecutorImpl& executor)const noexcept = 0;
-                virtual ~ICommand(void) noexcept = default;
-            };
-            class MoveCommand final : public ICommand
-            {
-                public:
-                void DoOperate(ExecutorImpl& executor)const noexcept override
-                {
-                    if (executor.IsFast())
-                    {
-                        executor.Move();
-                    }
-                    executor.Move();
-                }
-            };
-            class TurnLeftCommand final : public ICommand
-            {
-                public:
-                void DoOperate(ExecutorImpl& executor)const noexcept override
-                {
-                    if (executor.IsFast())
-                    {
-                        executor.Move();
-                    }
-                    executor.TurnLeft();
-                }
-            };
-            class TurnRightCommand final : public ICommand
-            {
-                public:
-                void DoOperate(ExecutorImpl& executor)const noexcept override
-                {
-                    if (executor.IsFast())
-                    {
-                        executor.Move();
-                    }
-                    executor.TurnRight();
-                }
-            };
-            class FastCommand final : public ICommand
-            {
-                public:
-                void DoOperate(ExecutorImpl& executor)const noexcept override
-                {
-                    executor.Fast();
-                }
-            };
             
     };
 }
