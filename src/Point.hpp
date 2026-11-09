@@ -1,9 +1,7 @@
 #pragma once
 
-namespace adas
-{
-    class Point final
-    {
+namespace adas {
+    class Point final {
         public:
             Point(const int x, const int y) noexcept;
             Point(const Point& rhs) noexcept;//拷贝构造

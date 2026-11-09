@@ -1,17 +1,14 @@
 #pragma once
 #include <string>
-namespace adas
-{
+namespace adas {
     /*汽车姿态*/
-    struct Pose
-    {
+    struct Pose {
         int x;//x坐标
         int y;//y坐标
         char heading;//'N' 'E' 'S' 'W'
     };
     /*执行器*/
-    class Executor
-    {
+    class Executor {
         public:
             //创建新的执行器实例
             static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'}) noexcept;

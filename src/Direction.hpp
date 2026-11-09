@@ -2,11 +2,9 @@
 
 #include "Point.hpp"
 
-namespace adas
-{
+namespace adas {
     /*方向类*/
-    class Direction final
-    {
+    class Direction final {
         public:
             static const Direction& GetDirection(const char heading) noexcept;  //获取方向
 

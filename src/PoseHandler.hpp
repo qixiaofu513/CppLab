@@ -3,10 +3,8 @@
 #include "Executor.hpp"
 #include "Direction.hpp"
 
-namespace adas
-{
-    class PoseHandler final
-    {
+namespace adas {
+    class PoseHandler final {
         Point point;//汽车位置
         const Direction* facing;//汽车方向
         bool isFast{false};//是否位于加速状态

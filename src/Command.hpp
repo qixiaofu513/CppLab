@@ -4,15 +4,11 @@
 
 #include <functional>
 
-namespace adas
-{
-    class MoveCommand final
-    {
+namespace adas {
+    class MoveCommand final {
     public:
-        void operator()(PoseHandler& poseHandler) const noexcept
-        {
-            if (poseHandler.IsFast())
-            {
+        void operator()(PoseHandler& poseHandler) const noexcept {
+            if (poseHandler.IsFast()) {
                 if (poseHandler.IsReverse())
                     poseHandler.Backward();
                 else
@@ -26,13 +22,10 @@ namespace adas
 
     };
 
-    class TurnLeftCommand final
-    {
+    class TurnLeftCommand final {
     public:
-        void operator()(PoseHandler& poseHandler) const noexcept
-        {
-            if (poseHandler.IsFast())
-            {
+        void operator()(PoseHandler& poseHandler) const noexcept {
+            if (poseHandler.IsFast()) {
                 if (poseHandler.IsReverse())
                     poseHandler.Backward();
                 else
@@ -46,13 +39,10 @@ namespace adas
 
     };
 
-    class TurnRightCommand final
-    {
+    class TurnRightCommand final {
     public:
-        void operator()(PoseHandler& poseHandler) const noexcept
-        {
-            if (poseHandler.IsFast())
-            {
+        void operator()(PoseHandler& poseHandler) const noexcept {
+            if (poseHandler.IsFast()) {
                 if (poseHandler.IsReverse())
                     poseHandler.Backward();
                 else
@@ -66,21 +56,17 @@ namespace adas
 
     };
 
-    class FastCommand final
-    {
+    class FastCommand final {
     public:
-        void operator()(PoseHandler& poseHandler) const noexcept
-        {
+        void operator()(PoseHandler& poseHandler) const noexcept {
             poseHandler.Fast();
         }
 
     };
 
-    class ReverseCommand final
-    {
+    class ReverseCommand final {
     public:
-        void operator()(PoseHandler& poseHandler) const noexcept
-        {
+        void operator()(PoseHandler& poseHandler) const noexcept {
             poseHandler.Reverse();
         }
 

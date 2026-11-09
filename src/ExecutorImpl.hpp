@@ -4,11 +4,9 @@
 #include "PoseHandler.hpp"
 #include <string>
 
-namespace adas
-{
+namespace adas {
     /*Executor类的具体实现*/
-    class ExecutorImpl final : public Executor
-    {
+    class ExecutorImpl final : public Executor {
         public:
             //构造函数，初始化汽车姿态
             explicit ExecutorImpl(const Pose &pose) noexcept;

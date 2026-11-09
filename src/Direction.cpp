@@ -1,7 +1,6 @@
 #include "Direction.hpp"
 
-namespace adas
-{
+namespace adas {
     //4种方向
     static const Direction directions[4] = {
         {0, 'E'},
@@ -18,39 +17,31 @@ namespace adas
         {0, 1}  //N
     };
 
-    const Direction& Direction::GetDirection(const char heading) noexcept
-    {
-        for (const auto& dir : directions)
-        {
-            if (dir.heading == heading)
-            {
+    const Direction& Direction::GetDirection(const char heading) noexcept {
+        for (const auto& dir : directions) {
+            if (dir.heading == heading) {
                 return dir;
             }
         }
         return directions[3]; //默认返回N方向
     }
 
-    Direction::Direction(const unsigned index, const char heading) noexcept : index(index), heading(heading)
-    {
+    Direction::Direction(const unsigned index, const char heading) noexcept : index(index), heading(heading) {
     }
 
-    const Point& Direction::Move(void) const noexcept
-    {
+    const Point& Direction::Move(void) const noexcept {
         return points[index];
     }
 
-    const Direction& Direction::LeftOne(void) const noexcept
-    {
+    const Direction& Direction::LeftOne(void) const noexcept {
         return directions[(index + 3) % 4];
     }
 
-    const Direction& Direction::RightOne(void) const noexcept
-    {
+    const Direction& Direction::RightOne(void) const noexcept {
         return directions[(index + 1) % 4];
     }
 
-    const char Direction::GetHeading(void) const noexcept
-    {
+    const char Direction::GetHeading(void) const noexcept {
         return heading;
     }
 }
