@@ -6,25 +6,9 @@
 
 namespace adas
 {
-    //class ICommand
-    //{
-    //public:
-    //    virtual void DoOperate(PoseHandler& poseHandler) const noexcept = 0;
-    //    virtual ~ICommand(void) noexcept = default;
-    //};
-
-    class MoveCommand final// : public ICommand
+    class MoveCommand final
     {
     public:
-        //void DoOperate(PoseHandler& poseHandler) const noexcept override
-        //{
-        //    if (poseHandler.IsFast())
-        //    {
-        //        poseHandler.Move();
-        //    }
-        //    poseHandler.Move();
-        //}
-
         void operator()(PoseHandler& poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
@@ -35,18 +19,9 @@ namespace adas
         }
 
     };
-    class TurnLeftCommand final// : public ICommand
+    class TurnLeftCommand final
     {
     public:
-        //void DoOperate(PoseHandler& poseHandler) const noexcept override
-        //{
-        //    if (poseHandler.IsFast())
-        //    {
-        //        poseHandler.Move();
-        //    }
-        //    poseHandler.TurnLeft();
-        //}
-
         void operator()(PoseHandler& poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
@@ -57,18 +32,9 @@ namespace adas
         }
 
     };
-    class TurnRightCommand final// : public ICommand
+    class TurnRightCommand final
     {
     public:
-        //void DoOperate(PoseHandler& poseHandler) const noexcept override
-        //{
-        //    if (poseHandler.IsFast())
-        //    {
-        //        poseHandler.Move();
-        //    }
-        //    poseHandler.TurnRight();
-        //}
-
         void operator()(PoseHandler& poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
@@ -79,14 +45,9 @@ namespace adas
         }
 
     };
-    class FastCommand final// : public ICommand
+    class FastCommand final
     {
     public:
-        //void DoOperate(PoseHandler& poseHandler) const noexcept override
-        //{
-        //    poseHandler.Fast();
-        //}
-
         void operator()(PoseHandler& poseHandler) const noexcept
         {
             poseHandler.Fast();

@@ -24,34 +24,18 @@ namespace adas
     void ExecutorImpl::Execute(const std::string &commands) noexcept
     {
         //表驱动
-        std::unordered_map<char, /*std::unique_ptr<ICommand>*/ std::function<void(PoseHandler& PoseHandler)>> cmderMap;
-        //建立操作M和前进指令的映射关系
-        //cmderMap.emplace('M', std::make_unique<MoveCommand>());
-
-        cmderMap.emplace('M', MoveCommand());
-
-        //建立操作L和左转指令的映射关系
-        //cmderMap.emplace('L', std::make_unique<TurnLeftCommand>());
-
-        cmderMap.emplace('L', TurnLeftCommand());
-
-        //建立操作R和右转指令的映射关系
-        //cmderMap.emplace('R', std::make_unique<TurnRightCommand>());
-
-        cmderMap.emplace('R', TurnRightCommand());
-
-        //建立操作F和快速移动指令的映射关系
-        //cmderMap.emplace('F', std::make_unique<FastCommand>());
-
-        cmderMap.emplace('F', FastCommand());
-
+        std::unordered_map<char, std::function<void(PoseHandler& PoseHandler)>> cmderMap{
+            {'M', MoveCommand()},        //前进
+            {'L', TurnLeftCommand()},    //左转
+            {'R', TurnRightCommand()},   //右转
+            {'F', FastCommand()},        //加速
+        };
+        
         for (const auto cmd : commands)
         {
             const auto it = cmderMap.find(cmd);
             if (it != cmderMap.end())
             {
-                //it->second->DoOperate(poseHandler);
-
                 it->second(poseHandler);
             }
         }
