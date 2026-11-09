@@ -12,6 +12,7 @@ namespace adas
     //    virtual void DoOperate(PoseHandler& poseHandler) const noexcept = 0;
     //    virtual ~ICommand(void) noexcept = default;
     //};
+
     class MoveCommand final// : public ICommand
     {
     public:
@@ -23,14 +24,16 @@ namespace adas
         //    }
         //    poseHandler.Move();
         //}
-        const std::function<void(PoseHandler& PoseHandler)> operate = [](PoseHandler& poseHandler) noexcept
+
+        void operator()(PoseHandler& poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
             {
                 poseHandler.Move();
             }
             poseHandler.Move();
-        };
+        }
+
     };
     class TurnLeftCommand final// : public ICommand
     {
@@ -43,14 +46,16 @@ namespace adas
         //    }
         //    poseHandler.TurnLeft();
         //}
-        const std::function<void(PoseHandler& PoseHandler)> operate = [](PoseHandler& poseHandler) noexcept
+
+        void operator()(PoseHandler& poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
             {
                 poseHandler.Move();
             }
             poseHandler.TurnLeft();
-        };
+        }
+
     };
     class TurnRightCommand final// : public ICommand
     {
@@ -63,14 +68,16 @@ namespace adas
         //    }
         //    poseHandler.TurnRight();
         //}
-        const std::function<void(PoseHandler& PoseHandler)> operate = [](PoseHandler& poseHandler) noexcept
+
+        void operator()(PoseHandler& poseHandler) const noexcept
         {
             if (poseHandler.IsFast())
             {
                 poseHandler.Move();
             }
             poseHandler.TurnRight();
-        };
+        }
+
     };
     class FastCommand final// : public ICommand
     {
@@ -79,9 +86,11 @@ namespace adas
         //{
         //    poseHandler.Fast();
         //}
-        const std::function<void(PoseHandler& PoseHandler)> operate = [](PoseHandler& poseHandler) noexcept
+
+        void operator()(PoseHandler& poseHandler) const noexcept
         {
             poseHandler.Fast();
-        };
+        }
+
     };
 }
