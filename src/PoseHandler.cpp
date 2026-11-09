@@ -11,9 +11,14 @@ namespace adas
         return {point.GetX(), point.GetY(), facing->GetHeading()};
     }
 
-    void PoseHandler::Move(void) noexcept
+    void PoseHandler::Forward(void) noexcept
     {
         point += facing->Move();
+    }
+
+    void PoseHandler::Backward(void) noexcept
+    {
+        point -= facing->Move();
     }
 
     void PoseHandler::TurnLeft(void) noexcept
@@ -31,8 +36,18 @@ namespace adas
         isFast = !isFast;
     }
 
+    void PoseHandler::Reverse(void) noexcept
+    {
+        isReverse = !isReverse;
+    }
+
     bool PoseHandler::IsFast(void) const noexcept
     {
         return isFast;
+    }
+
+    bool PoseHandler::IsReverse(void) const noexcept
+    {
+        return isReverse;
     }
 }

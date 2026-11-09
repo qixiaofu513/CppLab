@@ -10,6 +10,7 @@ namespace adas
         Point point;//汽车位置
         const Direction* facing;//汽车方向
         bool isFast{false};//是否位于加速状态
+        bool isReverse{false};//是否位于倒车状态
 
         public:
             PoseHandler(const Pose& pose) noexcept;
@@ -18,10 +19,17 @@ namespace adas
 
         public:
             Pose Query(void) const noexcept;//查询汽车姿态
-            void Move(void) noexcept;//移动汽车
+
+            void Forward(void) noexcept;//移动汽车
+            void Backward(void) noexcept;//后退汽车
+
             void TurnLeft(void) noexcept;//左转汽车
             void TurnRight(void) noexcept;//右转汽车
-            void Fast(void) noexcept;//加速汽车
+
+            void Fast(void) noexcept;//加速
+            void Reverse(void) noexcept;//倒车
+
             bool IsFast(void) const noexcept;//判断是否位于加速状态
+            bool IsReverse(void) const noexcept;//判断是否位于倒车状态
     };
 }

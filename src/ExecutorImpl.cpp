@@ -29,6 +29,7 @@ namespace adas
             {'L', TurnLeftCommand()},    //左转
             {'R', TurnRightCommand()},   //右转
             {'F', FastCommand()},        //加速
+            {'B', ReverseCommand()}        //倒车
         };
         
         for (const auto cmd : commands)
