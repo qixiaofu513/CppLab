@@ -26,8 +26,7 @@ namespace adas {
         return directions[3]; //默认返回N方向
     }
 
-    Direction::Direction(const unsigned index, const char heading) noexcept : index(index), heading(heading) {
-    }
+    Direction::Direction(const unsigned index, const char heading) noexcept : index(index), heading(heading) { }
 
     const Point& Direction::Move(void) const noexcept {
         return points[index];

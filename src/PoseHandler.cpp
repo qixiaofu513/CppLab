@@ -1,8 +1,7 @@
 #include "PoseHandler.hpp"
 
 namespace adas {
-    PoseHandler::PoseHandler(const Pose& pose) noexcept : point(pose.x, pose.y), facing(&Direction::GetDirection(pose.heading)) {
-    }
+    PoseHandler::PoseHandler(const Pose& pose) noexcept : point(pose.x, pose.y), facing(&Direction::GetDirection(pose.heading)) { }
 
     Pose PoseHandler::Query(void) const noexcept {
         return {point.GetX(), point.GetY(), facing->GetHeading()};

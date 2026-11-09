@@ -5,8 +5,7 @@
 #include <algorithm>
 
 namespace adas {
-    ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : poseHandler(pose) {
-    }
+    ExecutorImpl::ExecutorImpl(const Pose &pose) noexcept : poseHandler(pose) { }
 
     Pose ExecutorImpl::Query(void) const noexcept {
         return poseHandler.Query();
@@ -23,8 +22,8 @@ namespace adas {
         std::for_each(
             cmders.begin(),
             cmders.end(),
-            [this](const Cmder& cmd) noexcept {
-                cmd(poseHandler);
+            [this](const Cmder& cmder) noexcept {
+                cmder(poseHandler).DoOperate(poseHandler);
             }
         );
     }
