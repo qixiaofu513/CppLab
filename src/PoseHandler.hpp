@@ -1,18 +1,21 @@
 #pragma once
 
 #include "Executor.hpp"
+#include "Direction.hpp"
 
 namespace adas
 {
     class PoseHandler final
     {
-        Pose pose;//汽车姿态
+        Point point;//汽车位置
+        const Direction* facing;//汽车方向
         bool isFast{false};//是否位于加速状态
 
         public:
             PoseHandler(const Pose& pose) noexcept;
             PoseHandler(const PoseHandler&) = delete;            //禁止拷贝构造
             PoseHandler& operator=(const PoseHandler&) = delete; //禁止拷贝赋值
+
         public:
             Pose Query(void) const noexcept;//查询汽车姿态
             void Move(void) noexcept;//移动汽车
