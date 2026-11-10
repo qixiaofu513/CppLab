@@ -55,21 +55,39 @@ namespace adas {
 
     class FastCommand final {
     public:
-        ActionGroup operator()(PoseHandler& poseHandler) const noexcept {
-            ActionGroup actionGroup;
-            actionGroup.PushAction(ActionType::BE_FAST_ACTION);
-            return actionGroup;
+        ActionGroup operator()(PoseHandler&) const noexcept {
+            return ActionGroup({ActionType::BE_FAST_ACTION});
         }
 
     };
 
     class ReverseCommand final {
     public:
-        ActionGroup operator()(PoseHandler& poseHandler) const noexcept {
-            ActionGroup actionGroup;
-            actionGroup.PushAction(ActionType::BE_REVERSE_ACTION);
-            return actionGroup;
+        ActionGroup operator()(PoseHandler&) const noexcept {
+            return ActionGroup({ActionType::BE_REVERSE_ACTION});
         }
 
+    };
+
+    class TurnRoundCommand final {
+        public:
+        ActionGroup operator()(PoseHandler& poseHandler) const noexcept {
+            if (poseHandler.IsReverse()) {
+                return ActionGroup();
+            }
+            if (poseHandler.IsFast()) {
+                return ActionGroup({
+                    ActionType::FORWARD_1_STEP_ACTION,
+                    ActionType::TURNLEFT_ACTION,
+                    ActionType::FORWARD_1_STEP_ACTION,
+                    ActionType::TURNLEFT_ACTION
+                });
+            }
+            return ActionGroup({
+                ActionType::TURNLEFT_ACTION,
+                ActionType::FORWARD_1_STEP_ACTION,
+                ActionType::TURNLEFT_ACTION
+            });
+        }
     };
 }

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0...4.5)
 
 PROJECT("ProjectTemplateWithGTest")
 
-SET(CMAKE_CXX_STANDARD 14)
+SET(CMAKE_CXX_STANDARD 17)
 SET(CMAKE_CXX_FLAGS "-Wno-deprecated-declarations -Wall -Werror -Wnon-virtual-dtor -Woverloaded-virtual")
 
 #可执行文件输出目录
