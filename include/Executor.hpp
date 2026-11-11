@@ -7,11 +7,18 @@ namespace adas {
         int y;//y坐标
         char heading;//'N' 'E' 'S' 'W'
     };
+    /*车辆类型*/
+    enum class ExecutorType {
+        NORMAL,
+        SPORTS_CAR,
+        BUS,
+    };
     /*执行器*/
     class Executor {
         public:
             //创建新的执行器实例
-            static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'}) noexcept;
+            static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'},
+            const ExecutorType executorType = ExecutorType::NORMAL) noexcept;
         public:
             //默认构造函数和析构函数，禁止拷贝构造和赋值
             Executor(void) = default;
