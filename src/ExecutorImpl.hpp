@@ -1,15 +1,18 @@
 #pragma once
 
-#include "Executor.hpp"
-#include "./core/PoseHandler.hpp"
 #include <string>
+#include <memory>
+#include <algorithm>
+
+#include "cmder/CmderOrchestrator.hpp"
+#include "core/PoseHandler.hpp"
 
 namespace adas {
     /*Executor类的具体实现*/
     class ExecutorImpl final : public Executor {
         public:
             //构造函数，初始化汽车姿态
-            explicit ExecutorImpl(const Pose &pose) noexcept;
+            explicit ExecutorImpl(const Pose &pose, CmderOrchestrator* orchestrator) noexcept;
             //析构函数
             ~ExecutorImpl(void) noexcept = default;
             ExecutorImpl(const ExecutorImpl &) = delete;
@@ -21,6 +24,7 @@ namespace adas {
             void Execute(const std::string &commands) noexcept override;
         private:
             PoseHandler poseHandler;//汽车姿态处理器
+            std::unique_ptr<CmderOrchestrator> orchestrator;//命令执行器
             
     };
 }

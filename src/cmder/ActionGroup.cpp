@@ -5,6 +5,10 @@
 #include <algorithm>
 
 namespace adas {
+    ActionGroup& ActionGroup::operator+=(const ActionGroup& rhs) noexcept {
+        actions.insert(actions.end(), rhs.actions.begin(), rhs.actions.end());
+        return *this;
+    }
 
     class ForwardAction final {
         public:
